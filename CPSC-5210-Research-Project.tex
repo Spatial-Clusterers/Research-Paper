@@ -44,7 +44,7 @@
 \subsection{DBSCAN}
 
 \begin{algorithm}
-\caption{DBSCAN}
+\caption{The DBSCAN spatial clustering algorithm}
 \begin{algorithmic}[1]
 \Procedure{Dbscan}{$D, \epsilon,MinPts$}\Comment{$D$ set of points is unclassified}
 	\State $clusterID = 0$
@@ -57,6 +57,9 @@
         \EndIf
       \EndIf
 	\EndFor
+\EndProcedure
+\Statex
+\Procedure{ExpandClsuter}{}
 \EndProcedure
 \end{algorithmic}
 \end{algorithm}
