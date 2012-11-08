@@ -46,10 +46,16 @@
 \begin{algorithm}
 \caption{DBSCAN}
 \begin{algorithmic}[1]
-\Procedure{Dbscan}{$n, \epsilon,MinPts$}\Comment{$n$ is unclassified}
+\Procedure{Dbscan}{$D, \epsilon,MinPts$}\Comment{$D$ set of points is unclassified}
 	\State $clusterID = 0$
 	\For{$i\gets 1, n$}
-
+      \State $p \gets D[i]$
+      \State $p.visited \gets true$    \Comment{Mark $p$ as visited}
+      \If{$p.clusterID = UNCLASSIFIED$}
+        \If {\Call{ExpandCluster}{{$D, p, clusterID, \epsilon, MinPts$}}}
+          \State $clusterID \gets nextID(clusterID)$
+        \EndIf
+      \EndIf
 	\EndFor
 \EndProcedure
 \end{algorithmic}
