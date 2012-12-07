@@ -355,6 +355,7 @@
 \usepackage{tabularx,colortbl}
 \usepackage{algpseudocode}
 \usepackage{algorithm}
+\usepackage{qtree}
 
 \begin{document}
 %
@@ -492,6 +493,16 @@ Our research involves determining which of the selected algorithms provides the 
 \EndProcedure
 \end{algorithmic}
 \end{algorithm}
+
+{ \qtreeshowframes
+  {\Tree [.S This
+    [.VP [.V is ]
+         [.NP [.D a ] [ simple tree ] ]
+]]
+}
+
+\includegraphics[width=60mm]{cf_tree.png}
+waaaaaaay too pixelated even at 300 dpi :(
 
 %==================================
 % DESCRIPTION / SECTION
