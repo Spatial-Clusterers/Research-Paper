@@ -459,6 +459,8 @@ Our research involves determining which of the selected algorithms provides the 
 %==================================
 % DESCRIPTION / SECTION
 %==================================
+This needs to be added to significantly, then segues into the three algorithms \dots
+
 \subsection{DBSCAN}
 
 \begin{algorithm}
@@ -477,7 +479,7 @@ Our research involves determining which of the selected algorithms provides the 
   \EndFor
 \EndProcedure
 \Statex
-\Procedure{ExpandClsuter}{}
+\Procedure{ExpandCluster}{}
 \EndProcedure
 \end{algorithmic}
 \end{algorithm}
@@ -487,18 +489,20 @@ Our research involves determining which of the selected algorithms provides the 
 \subsection{BIRCH}
 
 \begin{algorithm}
-\caption{BIRCH}
+\caption{BIRCH: Balanced Iterative Reducing and Clustering using Hierarchies}
 \begin{algorithmic}[1]
-\Procedure{Birch}{}
+\Procedure{Birch}{$add, inputs, here$}
 \EndProcedure
 \end{algorithmic}
 \end{algorithm}
 
 { \qtreeshowframes
-  {\Tree [.S This
-    [.VP [.V is ]
-         [.NP [.D a ] [ simple tree ] ]
-]]
+  {\Tree  [.$CF_1|CF_2|CF_3$\\$child_1|child_2|child_3$
+            [.VP
+              [.V is ]
+              [.NP [.D a ] [ simple tree ] ]
+            ]
+          ]
 }
 
 \includegraphics[width=60mm]{cf_tree.png}
