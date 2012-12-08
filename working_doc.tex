@@ -314,7 +314,7 @@ The intial instantiation of the CF Tree has a runtime of $O(n)$, as the BIRCH al
 
 The custom hierarchical agglomerative clustering algorithm used in phase three has a run time of $O(n^2)$, an improvement over a normal runtime of $O(n^3)$ for most hierarchical agglomerative clustering algorithms.
 
-This gives BIRCH overall a run time of $O(n+n^2)$, or rather $O(n^2)$.
+This gives BIRCH overall a run time of $O(n+n^2)$, or rather $O(n^2)$. However, the authors of BIRCH claim a run time of $O(n)$ \cite{birch}.
 \subsection{DBSCAN}
 
 Invoking the function \texttt{SetOfPoints.reqionQuery(Point, $\epsilon$)} returns the $\epsilon$-neighborhood of \texttt{Point} in \texttt{SetOfPoints} as a list of points. Utilizing an R*-tree data structure for efficient reqion queries results in $O(\lg{n})$ time because the height of an R*-tree is $O(\ln{n})$. For each of the $n$ points in the database, we have at most one reqion query,resulting in an average time complexity of $O(n \lg{n})$. \cite{dbscan}
@@ -467,11 +467,26 @@ The results of the empirical evaluation correlated well with the asymptotic time
 \newpage
 \begin{thebibliography}{1}
 
-\bibitem{efficient} A. Denton, ``EFFICIENT HIERARCHICAL CLUSTERING OF LARGE DATA SETS USING P-TREES'', \emph{unpublished}, available at
-\url{http://www.cs.ndsu.nodak.edu/~adenton/thesis/chapter7_Final.pdf}
+\bibitem{survey} R. Xu, D. Wunsch, ``Survey of Clustering Algorithms'', \emph{IEEE Transactions on Neural Networks}, vol. 16, no. 3, May, 2005, available at 
+\url{http://axon.cs.byu.edu/Dan/678/papers/Cluster/Xu.pdf}.
+
+\bibitem{spat} J. Burt, G. barber, D. Rugby.  ``Elementary Statistics for Geographers'', Guilford Publications, 2009.
+
+\bibitem{spatial} E. Kolatch, ``Clustering Algorithms for Spatial Databases: A Survey'', \emph{unpublished}, available at
+\url{http://mrl.cecsresearch.org/Resources/papers/Ericasurvey.pdf}
+
+\bibitem{birch} T. Zhang, R. Ramakrishnan, M. Livny, ``BIRCH: An Efficient Data Clustering Method for Very Large Databases'', \emph{SIGMOD ’96}, available at
+\url{http://citeseerx.ist.psu.edu/viewdoc/summary?doi=10.1.1.17.2504}
+
+\bibitem{dbscan} M. Ester, H. Kriegel, J. Sander, X. Xu. ``A Density-Based Algorithm for Discovering Clusters in Large Spatial Databases with Noise'', \emph{2nd International Conference on Knowledge Discovery and Data Mining}
+
+\bibitem{pattern} J. C. Bezdek ``Pattern Recognition with Fuzzy Objective Function Algorithm'', \emph{Press, New York}, 1981.
 
 \bibitem{optimal} A. Hinneburg, D.A. Keim, ``Optimal Grid-Clustering: Towards Breaking the Curse of Dimensionality in High-Dimensional Clustering'', \emph{unpublished}, 1999, available at
 \url{http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.44.4721&rep=rep1&type=pdf} 
+
+\bibitem{efficient} A. Denton, ``EFFICIENT HIERARCHICAL CLUSTERING OF LARGE DATA SETS USING P-TREES'', \emph{unpublished}, available at
+\url{http://www.cs.ndsu.nodak.edu/~adenton/thesis/chapter7_Final.pdf}
 
 \bibitem{fuzzy} Apache Foundation, ``Fuzzy K-means'', \emph{Apache Mahmout}, available at
 \url{https://cwiki.apache.org/MAHOUT/fuzzy-K-Means.html}
@@ -486,19 +501,10 @@ The results of the empirical evaluation correlated well with the asymptotic time
 
 \bibitem{kmeans} C-T Chang, J.Z.C. Lai and M-D Jeng, ``A Fuzzy K-means clustering algorithm  using cluster center displacement'', \emph{Journal of information science and engineering} 27, 995-1009, 2011.
 
-\bibitem{spatial} E. Kolatch, ``Clustering Algorithms for Spatial Databases: A Survey'', \emph{unpublished}, available at
-\url{http://mrl.cecsresearch.org/Resources/papers/Ericasurvey.pdf}
-
 \bibitem{oberst} Jan Oberst, ``BIRCH'', \emph{Github.com}, available at
 \url{https://github.com/janoberst/BIRCH/blob/master/birch.py}
 
-\bibitem{spat} J. burt, G. barber, D. Rugby.  ``Elementary Statistics for Geographers'', Guilford Publications, 2009.
-
-\bibitem{pattern} J. C. Bezdek ``Pattern Recognition with Fuzzy Objective Function Algorithm'', \emph{Press, New York}, 1981.
-
 \bibitem{suppressed} J. L. Fan, W. Z. Zhen, and W. X. Xie, ``Suppressed fuzzy c-means clustering algorithm'', \emph{ Recognition Letters}, 2003, pp. 1607-1612.
-
-\bibitem{dbscan} M. Ester, H. Kriegel, J. Sander, X. Xu. ``A Density-Based Algorithm for Discovering Clusters in Large Spatial Databases with Noise'', \emph{2nd International Conference on Knowledge Discovery and Data Mining}
 
 \bibitem{denisty} M. Parimala, D. Lopez, N.C. Senthilkumar, ``A Survey on Density Based Clustering Algorithms for Mining Large Spatial Databases'', \emph{International Journal of Advanced Science and Technology}, vol. 31, June, 2011, available at
 \url{http://www.sersc.org/journals/IJAST/vol31/5.pdf}
@@ -510,12 +516,6 @@ The results of the empirical evaluation correlated well with the asymptotic time
 \url{http://www.ijarcsse.com/docs/papers/8_August2012/Volume_2_issue_8/V2I800161.pdf}
 
 \bibitem{efficient} R. L. Cannon, J. V. Dave, and J. C. Bezdek, ``Efficient implementation of the fuzzy c- means clustering algorithm'', \emph{IEEE Transactions on PAMI}, Vol. 8, 1986, pp. 248-255.
-
-\bibitem{survey} R. Xu, D. Wunsch, ``Survey of Clustering Algorithms'', \emph{IEEE Transactions on Neural Networks}, vol. 16, no. 3, May, 2005, available at 
-\url{http://axon.cs.byu.edu/Dan/678/papers/Cluster/Xu.pdf}.
-
-\bibitem{birch} T. Zhang, R. Ramakrishnan, M. Livny, ``BIRCH: An Efficient Data Clustering Method for Very Large Databases'', \emph{SIGMOD ’96}, available at
-\url{http://citeseerx.ist.psu.edu/viewdoc/summary?doi=10.1.1.17.2504}
 
 \bibitem{extended} U. Kaymak, M. Setnes, ``Extended Fuzzy Clustering Algorithms'', \emph{Erasmus Research Institute of Management}, available at
 \url{http://repub.eur.nl/res/pub/57/erimrs20001123094510.pdf}
