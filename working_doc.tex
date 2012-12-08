@@ -207,12 +207,26 @@
   % DBSCAN ALGORITHM
   %==================================
   \subsection{DBSCAN}
-  The DBSCAN (Density-Based Algorithm for Discovering Clusters in Large Spatial Databases). The algorithm has two input parameters, the Eps-neighborhood $\epsilon$ and $MinPts$, which much be determined apriori. DBSCAN holds the following lemmas:
+  The DBSCAN (Density-Based Algorithm for Discovering Clusters in Large Spatial Databases) is a density-based clustering algorithm, . The algorithm has two input parameters, the Eps-neighborhood $\epsilon$ and $MinPts$, which much be determined apriori. The following definitions are required for this algorithm:
+
+  \begin{description}
+    \item{\textbf{Definition 1:}} ($\epsilon$-neighborhood of a point) The $\epsilon$-neighborhood of a point $p$, denoted by $N_{\epsilon}(p)$, is defined by $N_{\epsilon}(p) = \{q \in D | dist(p,q) \leq \epsilon \}$
+    \item{\textbf{Definition 2:}}
+    \item{\textbf{Definition 3:}}
+    \item{\textbf{Definition 4:}}
+    \item{\textbf{Definition 5:}}
+    \item{\textbf{Definition 6:}}
+  \end{description}
+
+
+  A cluster $C$, which is a subset of the dataset $D$, must meet the following lemmas \cite{}:
 
   \begin{description}
     \item{\textbf{Lemma 1:}} Let $p$ be a point in $D$ and $|N_{\epsilon}(p)| \geq MinPts$. Then the set $O = \{o | o \in D \}$ and $o$ is density-reachable from $p$ with w.r.t. $\epsilon$ and $MinPts$ is a cluster w.r.t. $\epsilon$ and $MinPts$.
     \item{\textbf{Lemma 2:}} Let $C$ be a cluster w.r.t. $\epsilon$ and $MinPts$ and let $p$ be any point in $C$ with $|N_{\epsilon}(p)| \geq MinPts$. Then $C$ equals to the set $O = \{o | o\}$ is density-reachable from $p$ w.r.t. $\epsilon$ and $MinPts$
   \end{description}
+  To discover a cluster, \texttt{DBSCAN} chooses an arbitrary point $p$ and retrieves all points density-reachable from $p$ wrt. $\epsilon$ and $MinPts$. If $p$ is a border point, no points are density-reachable from $p$ and \texttt{DBSCAN} visits the next point of the database. \cite{}\\
+
   Psuedocode for the two main functions of the algorithms, \texttt{DBSCAN} and \texttt{ExpandCluster}, are provided below:
 
   \begin{algorithm}
