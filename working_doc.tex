@@ -122,7 +122,7 @@
   %==================================
   \subsection{BIRCH}
 
-  The Balanced Iterative Reducing and Clustering using Hierarchies (BIRCH) algorithm was conceived of as a way to balance the need to cluster extremely large data sets in situations where time and memory are limited. To achieve the time requirement, BIRCH only scans a data set one time, which improves the rumtime efficiency. While it may be counterintuitive that it only scans a data set one time while also having a memory restricted system, BIRCH accomplishes this by building a Clustering Feature Tree (CF Tree) that can cluster data in chunks as it is scanned piecemeal \cite{birch}.
+  The Balanced Iterative Reducing and Clustering using Hierarchies (BIRCH) algorithm was conceived of as a way to balance the need to cluster extremely large data sets in situations where time and memory are limited \cite{birch}. To achieve the time requirement, BIRCH only scans a data set one time, which improves the rumtime efficiency. While it may be counterintuitive that it only scans a data set one time while also having a memory restricted system, BIRCH accomplishes this by building a Clustering Feature Tree (CF Tree) that can cluster data in chunks as it is scanned piecemeal \cite{birch}.
 
   The BIRCH algorithm consists of four phases, two of which are optional:
   \vspace{1 mm}
@@ -400,6 +400,10 @@
   \newpage
   \begin{thebibliography}{1}
 
+
+  \bibitem{birch} T. Zhang, R. Ramakrishnan, M. Livny, ``BIRCH: An Efficient Data Clustering Method for Very Large Databases'', \emph{SIGMOD ’96}, available at
+  \url{http://citeseerx.ist.psu.edu/viewdoc/summary?doi=10.1.1.17.2504}
+
   \bibitem{survey} R. Xu, D. Wunsch, ``Survey of Clustering Algorithms'', \emph{IEEE Transactions on Neural Networks}, vol. 16, no. 3, May, 2005, available at 
   \url{http://axon.cs.byu.edu/Dan/678/papers/Cluster/Xu.pdf}.
 
@@ -432,9 +436,6 @@
 
   \bibitem{extended} U. Kaymak, M. Setnes, ``Extended Fuzzy Clustering Algorithms'', \emph{Erasmus Research Institute of Management}, available at
   \url{http://repub.eur.nl/res/pub/57/erimrs20001123094510.pdf}
-
-  \bibitem{birch} T. Zhang, R. Ramakrishnan, M. Livny, ``BIRCH: An Efficient Data Clustering Method for Very Large Databases'', \emph{SIGMOD ’96}, available at
-  \url{http://citeseerx.ist.psu.edu/viewdoc/summary?doi=10.1.1.17.2504}
 
   \bibitem{optimal} A. Hinneburg, D.A. Keim, ``Optimal Grid-Clustering: Towards Breaking the Curse of Dimensionality in High-Dimensional Clustering'', \emph{unpublished}, 1999, available at
   \url{http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.44.4721&rep=rep1&type=pdf}  
