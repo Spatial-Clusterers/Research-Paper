@@ -105,24 +105,12 @@ Chattanooga, Tennessee, U.S.A.\\}}
 \begin{abstract}
 %\boldmath
 % Please include a brief abstract here. The abstract should be limited to 50-200 words and should concisely state what was done, how it was done, principal results, and their significance.
-Our primary motivation for undertaking this study is to test the reliability of an algorithm's theoretically estimated running time and the experimental results that follow. Secondary considerations are pursuing algorithms that operate on relevant themes emerging in computer science such as massive data sets. The following algorithms will be implemented and evaluated:
-\vspace{1 mm}
-\begin{itemize}
-  \item BIRCH
-  \item DBSCAN
-  \item Fuzzy K-Means
-\end{itemize}
-\vspace{1 mm}
-Our research involves determining which of the selected algorithms provides the most efficient estimated runtime and most efficient experimental runtime in a real-world implementation with regard to spatial-specific metrics including:
-\vspace{1 mm}
-\begin{itemize}
-  \item The ability to handle dimensionality
-  \item Handle irregularly shaped clusters
-  \item Insensitivity to noise
-  \item Independence of the data input order
-\end{itemize}
-\vspace{1 mm}
-The algorithms were evaluated using a data set from the National Oceanic and Atmospheric Administration (NOAA), which was comprised of hail storm data from 1955 - 2011. The evaluation consisted of running the algorithms on steadily reduced subsets of the NOAA data set, and recording their run time for each subset. The theoretical growth rates of the different algorithms do indeed line up with their real world growth rates.
+
+This report presents a selective survey of spatial clustering algorithms that includes BIRCH, DBSCAN, and Fuzzy K-Means. The focus of this survey is to provide a comparison of each algorithm's asymptotic running-time and experimental results.
+
+Our research involves determining which of the selected algorithms provides the most efficient estimated runtime and most efficient experimental runtime in a real-world implementation with regard to spatial-specific metrics including: the ability to handle dimensionality, ability to hndle irregularly shaped clusters, insensitivity to noise, and independence of the data input order.
+
+The algorithms were evaluated using a data set from the National Oceanic and Atmospheric Administration (NOAA), which was comprised of hail storm data from 1955 - 2011. The evaluation ran each algorithm on recursive subsets of the dataset of size $[n/2]$ and recording their run time for each subset. The asymptotic running time correlates strongly with the empirical results, validating the use of asymtotic analysis.
 
 \end{abstract}
 
@@ -200,16 +188,7 @@ $L$ the leaf threshold, i.e. how many CF data points are allowed in a leaf node\
 % DBSCAN ALGORITHM
 %==================================
 \subsection{DBSCAN}
-Intro about DBSCAN here, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, brown 
-\begin{tikzpicture}
-\begin{scope}[yscale=0.93,transform shape]
-    \node[xscale=2,yscale=0.3,shading=eggshadow,circle,minimum size=7mm] at (0,2.75mm){};
-    \shade[shading=eggshading] (0,2.7mm)..controls (9mm,0.25cm) and (7mm,2cm)%
-    ..(0,20.5mm)..controls(-7mm,2cm) and (-9mm,2.5mm)..(0,2.7mm)--cycle;
-\end{scope}
-\end{tikzpicture}
-egg, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah
-
+The DBSCAN (Density-Based Algorithm for Discovering Clusters in Large Spatial Databases)
 \begin{algorithm}
 \caption{DBSCAN}
 \begin{algorithmic}[1]
@@ -257,8 +236,6 @@ geology, shape analysis, chemistry and many more applications \cite{pattern}. FK
   \EndFor
 \EndProcedure
 \Statex
-\Procedure{ExpandCluster}{}
-\EndProcedure
 \end{algorithmic}
 \end{algorithm}
 
@@ -275,11 +252,7 @@ The custom hierarchical agglomerative clustering algorithm used in phase three h
 
 This gives BIRCH overall a run time of $O(n+n^2)$, or rather $O(n^2)$.
 \subsection{DBSCAN}
-XXXXXXXXXXXXXXXXXXXXXXXXXXXXX
-XXXX ADD YOUR GOODS HERE XXXX
-XXXX ADD YOUR GOODS HERE XXXX
-XXXX ADD YOUR GOODS HERE XXXX
-XXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+
 
 \subsection{Fuzzy K-Means}
 The asymptotic efficiency of FKM algorithm has the following notations:\\*
@@ -403,74 +376,7 @@ Python 2.7.3
 \end{center}
 
 \section{Discussion and Conclusion}
-Stuff here about what we learned, etc.Stuff here about what we learned, etc.
-Stuff here about what we learned, etc.
-Stuff here about what we learned, etc.
-Stuff here about what we learned, etc.
-Stuff here about what we learned, etc.
-Stuff here about what we learned, etc.
-Stuff here about what we learned, etc.
-Stuff here about what we learned, etc.
-Stuff here about what we learned, etc.
-Stuff here about what we learned, etc.
-Stuff here about what we learned, etc.
-Stuff here about what we learned, etc.
-Stuff here about what we learned, etc.
-Stuff here about what we learned, etc.
-Stuff here about what we learned, etc.
-Stuff here about what we learned, etc.
-Stuff here about what we learned, etc.
-Stuff here about what we learned, etc.
-Stuff here about what we learned, etc.
-Stuff here about what we learned, etc.
-Stuff here about what we learned, etc.
-Stuff here about what we learned, etc.
-Stuff here about what we learned, etc.
-Stuff here about what we learned, etc.
-Stuff here about what we learned, etc.
-Stuff here about what we learned, etc.
-Stuff here about what we learned, etc.
-Stuff here about what we learned, etc.
-Stuff here about what we learned, etc.
-Stuff here about what we learned, etc.
-Stuff here about what we learned, etc.
-Stuff here about what we learned, etc.
-Stuff here about what we learned, etc.
-Stuff here about what we learned, etc.
-Stuff here about what we learned, etc.
-Stuff here about what we learned, etc.
-Stuff here about what we learned, etc.
-Stuff here about what we learned, etc.
-Stuff here about what we learned, etc.
-Stuff here about what we learned, etc.
-Stuff here about what we learned, etc.
-Stuff here about what we learned, etc.
-Stuff here about what we learned, etc.
-Stuff here about what we learned, etc.
-Stuff here about what we learned, etc.
-Stuff here about what we learned, etc.
-Stuff here about what we learned, etc.
-Stuff here about what we learned, etc.
-Stuff here about what we learned, etc.
-Stuff here about what we learned, etc.
-Stuff here about what we learned, etc.
-Stuff here about what we learned, etc.
-Stuff here about what we learned, etc.
-Stuff here about what we learned, etc.
-Stuff here about what we learned, etc.
-Stuff here about what we learned, etc.
-Stuff here about what we learned, etc.
-Stuff here about what we learned, etc.
-Stuff here about what we learned, etc.
-Stuff here about what we learned, etc.
-Stuff here about what we learned, etc.
-Stuff here about what we learned, etc.
-Stuff here about what we learned, etc.
-Stuff here about what we learned, etc.
-Stuff here about what we learned, etc.
-Stuff here about what we learned, etc.
-Stuff here about what we learned, etc.
-Stuff here about what we learned, etc.
+
 
 \newpage
 \begin{thebibliography}{1}
