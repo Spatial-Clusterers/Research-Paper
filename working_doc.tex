@@ -345,7 +345,7 @@ The authors' goal for this report was to use as much open-source software as pos
   \item{\textbf{RAM}} 16GB DDR3 @ 1000MHz
   \item{\textbf{Programming Language}} Python 2.7.3
 \end{description} 
-Function calls that were not directly related to each respective algorithm, i.e. file I/O, was not included in the cumulative running time in the figures below.
+Function calls that were not directly related to each respective algorithm, i.e. file I/O, was not included in the cumulative running time in the figures below. The algorithms were evaluated using a data set from the National Oceanic and Atmospheric Administration (NOAA), which was comprised of hail storm data from 1955 - 2011. The evaluation ran each algorithm on recursive subsets of the dataset of size $[n/2]$ and recording their run time for each subset. The asymptotic running time correlates strongly with the empirical results, validating the use of asymtotic analysis. The data set had duplicate points, i.e. duplicate latitude and longitude values, removed. 
 
 \subsection{Results}
 
@@ -462,7 +462,7 @@ Function calls that were not directly related to each respective algorithm, i.e.
 % \end{figure}
 
 \section{Discussion and Conclusion}
-The results of the empirical evaluation correlated well with the asymptotic time complexity with respect to each algorithm, with the exception of \texttt{DBSCAN}. The function calls related to the algorithm correlated well with the asymptotic time complexity, but the actual program running time was much larger and prohibited the completion of a subset of the dataset. Furthermore, \texttt{DBSCAN} is unable to handle clustering of data with a dimensionality greater than 2, and therefore suffering the curse of dimensionality. \cite{optimal}
+The results of the empirical evaluation correlated well with the asymptotic time complexity with respect to each algorithm, with the exception of \texttt{DBSCAN}. The function calls related to the algorithm correlated well with the asymptotic time complexity without the R*-tree data structure, but the actual program running time was much larger and prohibited the completion of a subset of the dataset. In addition, the author was unable to use the R*-tree implementation in the DBSCAN implementation. Furthermore, \texttt{DBSCAN} is unable to handle clustering of data with a dimensionality greater than 2, and therefore suffering the curse of dimensionality. \cite{optimal}
 
 \newpage
 \begin{thebibliography}{1}
