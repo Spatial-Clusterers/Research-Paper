@@ -415,18 +415,33 @@ Function calls that were not directly related to each respective algorithm, i.e.
   };
   \addlegendentry{BIRCH}
   \addplot coordinates {
-    (150000,75)
-    (75000,45)
-    (37500,25)
-    (18750,10)
-    (9375,5)
-    (4688,2)
-    (2344,1)
-    (1172,0.5)
-    (586,0.25)
-    (297,0.125)
+    (150000,155.195909)
+    (75000,74.441829)
+    (37500,38.501281)
+    (18750,19.471102)
+    (9375,9.723024)
+    (4688,4.771375)
+    (2344,2.414930)
+    (1172,1.214021)
+    (586,0.640441)
+    (297,0.338978)
   };
-  \addlegendentry{DBSCAN}
+  \addlegendentry{Fuzzy K-Means}
+\end{axis}
+\end{tikzpicture}
+\end{center}
+
+
+
+\begin{center}
+\begin{tikzpicture}
+\begin{axis}[
+    height=9cm,
+    width=9cm,
+    xlabel={data points in thousands},
+    ylabel={seconds},
+    grid=major,
+  ]
   \addplot coordinates {
     (9375,3418.699)
     (4688,861.212)
@@ -435,7 +450,7 @@ Function calls that were not directly related to each respective algorithm, i.e.
     (586,5.066)
     (297,1.827)
   };
-  \addlegendentry{Fuzzy K-Means}
+  \addlegendentry{DBSCAN}
 \end{axis}
 \end{tikzpicture}
 \end{center}
