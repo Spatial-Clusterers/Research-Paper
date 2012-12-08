@@ -181,7 +181,7 @@ $L$ the leaf threshold, i.e. how many CF data points are allowed in a leaf node\
 \begin{algorithm}
 \caption{BIRCH}
 \begin{algorithmic}[1]
-  \Procedure{BirchTreeBuilder}{}\Comment{Phase 1}
+  \Procedure{BirchTreeBuilder}{$i$, $node$}\Comment{Phase 1}
     \State Input: $D$ (set with $n$ points), $root$ (root of CF Tree)
     \State Output: CF Tree
     \For{$i\gets 1, n$}
@@ -189,7 +189,7 @@ $L$ the leaf threshold, i.e. how many CF data points are allowed in a leaf node\
       \If{$i$ closest to current node}
         \State{insert $i$ into current node}
         \Else
-        \State{check $i$ against node's children}
+        \State{BirchTreeBuilder($i$, $node.children$)}
       \EndIf
     \EndFor
   \EndProcedure
