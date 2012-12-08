@@ -169,7 +169,7 @@
   \begin{algorithm}
   \caption{BIRCH - Phase 1}
   \begin{algorithmic}[1]
-    \Procedure{BirchTreeBuilder}{$i$, $node$}\Comment{Phase 1}
+    \Procedure{BirchTreeBuilder}{$i$, $node$}
       \State Input: $D$ (set with $n$ points), $root$ (root of CF Tree)
       \State Output: CF Tree
       \For{$i\gets 1, n$}
@@ -181,10 +181,6 @@
         \EndIf
       \EndFor
     \EndProcedure
-    \Procedure{HierarchicalAgglomerativeClustering}{}
-      \State Input: $L$ (set of all leaf node in CF Tree)
-      \State Output: CF Tree
-    \EndProcedure
   \end{algorithmic}
   \end{algorithm}
 
@@ -194,11 +190,22 @@
     \Procedure{Clustering}{}
       \State Input: $L$ (set with $n$ leaf nodes in CF Tree)
       \State Output: Clusters
-      \For{$i\gets 1, n$}
-        \If{current leaf == closest to $i$}
-          \State{return current leaf + $i$ as cluster}
-        \EndIf
-      \EndFor
+      \While{$n > 1$}
+        \State{$closest = \infty$}
+        \State{$left = null, right = null$}
+        \For{$A\:\:in\:\:L$}
+          \For{$B\:\:in\:\:L$}
+            \If{$A!=B\:\&\:dist(A,B) < closest$}
+              \State{$closest = dist(A,B)$}
+              \State{$left = A$}
+              \State{$right = B$}
+            \EndIf
+          \EndFor
+        \EndFor
+        \State{$remove\:\:left\:\:from\:\:L$}
+        \State{$remove\:\:right\:\:from\:\:L$}
+        \State{$add\:\:cluster\:\:(left,right)\:\:to\:\:L$}
+      \EndWhile
     \EndProcedure
   \end{algorithmic}
   \end{algorithm}
