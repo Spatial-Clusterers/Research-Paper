@@ -497,16 +497,18 @@ This needs to be added to significantly, then segues into the three algorithms \
 \end{algorithmic}
 \end{algorithm}
 
-{ \qtreeshowframes
-  {\Tree  [.$CF_1|CF_2|CF_3$\\$child_1|child_2|child_3$
-            [.VP
-              [.V is ]
-              [.NP [.D a ] [ simple tree ] ]
-            ]
-          ]
-}
+% { \qtreeshowframes
+%   {\Tree  [.$CF_1|CF_2|CF_3$\\$child_1|child_2|child_3$
+%             [.VP
+%               [.V is ]
+%               [.NP [.D a ] [ simple tree ] ]
+%             ]
+%           ]
+% }
 
-\includegraphics[width=60mm]{cf_tree.png}
+\begin{center}
+\includegraphics[width=90mm]{cf_tree.png}
+\end{center}
 waaaaaaay too pixelated even at 300 dpi :(
 
 %==================================
@@ -547,14 +549,30 @@ Place each figure and/or table within the width of a single column, as illustrat
 
 \begin{table}[h]
 \begin{center}
-\caption{Example of a table caption.} \label{Table1Label}
-\begin{tabular}{|c|c|c|}
+\caption{Comparison of Algorithm runtimes, in seconds} \label{Table1Label}
+\begin{tabular}{|c|c|c|c|}
  \hline
- Table Column Head 1 & Table Column Head 2 & Table Column Head 3\\
+ Number of data points & BIRCH & Fuzzy K-means & DBSCAN\\
  \hline
- Item 4 & Item 5 & Item 6\\
+ 150,000 & 25.030436 & 155.195909 & 999\\
  \hline
- Item 7 & Item 8 & Item 9\\
+ 75,000 & 11.624714 & 74.441829 & 999\\
+ \hline
+ 37,500 & 5.232216 & 38.501281 & 999\\
+ \hline
+ 18,750 & 2.363530 & 19.471102 & 999\\
+ \hline
+ 9375 & 1.031360 & 9.723024 & 999\\
+ \hline
+ 4688 & 0.447284 & 4.771375 & 999\\
+ \hline
+ 2344 & 0.203005 & 2.414930 & 999\\
+ \hline
+ 1172 & 0.091562 & 1.214021 & 999\\
+ \hline
+ 586 & 0.043213 & 0.640441 & 999\\
+ \hline
+ 297 & 0.020289 & 0.338978 & 999\\
  \hline
 \end{tabular}
 \end{center}
