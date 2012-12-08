@@ -188,7 +188,14 @@
   % DBSCAN ALGORITHM
   %==================================
   \subsection{DBSCAN}
-  The DBSCAN (Density-Based Algorithm for Discovering Clusters in Large Spatial Databases)
+  The DBSCAN (Density-Based Algorithm for Discovering Clusters in Large Spatial Databases). The algorithm has two input parameters, the Eps-neighborhood $\epsilon$ and $MinPts$, which much be determined apriori. DBSCAN holds the following lemmas:
+
+  \begin{description}
+    \item{\textbf{Lemma 1:}} Let $p$ be a point in $D$ and $|N_{\epsilon}(p)| \geq MinPts$. Then the set $O = \{o | o \in D \}$ and $o$ is density-reachable from $p$ with w.r.t. $\epsilon$ and $MinPts$ is a cluster w.r.t. $\epsilon$ and $MinPts$.
+    \item{\textbf{Lemma 2:}} Let $C$ be a cluster w.r.t. $\epsilon$ and $MinPts$ and let $p$ be any point in $C$ with $|N_{\epsilon}(p)| \geq MinPts$. Then $C$ equals to the set $O = \{o | o\}$ is density-reachable from $p$ w.r.t. $\epsilon$ and $MinPts$
+  \end{description}
+  Psuedocode for the two main functions of the algorithms, \texttt{DBSCAN} and \texttt{ExpandCluster}, are provided below:
+
   \begin{algorithm}
   \caption{DBSCAN}
   \begin{algorithmic}[1]
