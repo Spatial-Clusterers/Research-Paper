@@ -167,7 +167,7 @@
   $L$ the leaf threshold, i.e. how many CF data points are allowed in a leaf node\\*
 
   \begin{algorithm}
-  \caption{BIRCH}
+  \caption{BIRCH - Phase 1}
   \begin{algorithmic}[1]
     \Procedure{BirchTreeBuilder}{$i$, $node$}\Comment{Phase 1}
       \State Input: $D$ (set with $n$ points), $root$ (root of CF Tree)
@@ -178,6 +178,25 @@
           \State{insert $i$ into current node}
           \Else
           \State{BirchTreeBuilder($i$, $node.children$)}
+        \EndIf
+      \EndFor
+    \EndProcedure
+    \Procedure{HierarchicalAgglomerativeClustering}{}
+      \State Input: $L$ (set of all leaf node in CF Tree)
+      \State Output: CF Tree
+    \EndProcedure
+  \end{algorithmic}
+  \end{algorithm}
+
+  \begin{algorithm}
+  \caption{BIRCH - Phase 3}
+  \begin{algorithmic}[1]
+    \Procedure{Clustering}{}
+      \State Input: $L$ (set with $n$ leaf nodes in CF Tree)
+      \State Output: Clusters
+      \For{$i\gets 1, n$}
+        \If{current leaf == closest to $i$}
+          \State{return current leaf + $i$ as cluster}
         \EndIf
       \EndFor
     \EndProcedure
