@@ -204,9 +204,9 @@ $L$ the leaf threshold, i.e. how many CF data points are allowed in a leaf node\
           \EndIf
         \EndFor
       \EndFor
-      \State{$remove\:\:left\:\:from\:\:L$}
-      \State{$remove\:\:right\:\:from\:\:L$}
-      \State{$add\:\:cluster\:\:(left,right)\:\:to\:\:L$}
+      \State{remove $left$ from $L$}
+      \State{remove $right$ from $L$}
+      \State{add $cluster(left,right)$ to $L$}
     \EndWhile
   \EndProcedure
 \end{algorithmic}
@@ -356,13 +356,13 @@ Function calls that were not directly related to each respective algorithm, i.e.
  \hline
  Number of data points & BIRCH & DBSCAN& Fuzzy K-Means \\
  \hline
- 150,000 & 25.030436 & & 155.195909\\
+ 150,000 & 25.030436 & | & 155.195909\\
  \hline
- 75,000 & 11.624714 & & 74.441829\\
+ 75,000 & 11.624714 & | & 74.441829\\
  \hline
- 37,500 & 5.232216 &  & 38.501281\\
+ 37,500 & 5.232216 & | & 38.501281\\
  \hline
- 18,750 & 2.363530 & & 19.471102\\
+ 18,750 & 2.363530 & | & 19.471102\\
  \hline
  9375 & 1.031360 & 3418.699 & 9.723024\\
  \hline
