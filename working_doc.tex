@@ -319,35 +319,6 @@
 % cuted.sty or midfloat.sty packages (also by Sigitas Tolusis) as IEEE does
 % not format its papers in such ways.
 
-
-
-
-
-% *** PDF, URL AND HYPERLINK PACKAGES ***
-%
-%\usepackage{url}
-% url.sty was written by Donald Arseneau. It provides better support for
-% handling and breaking URLs. url.sty is already installed on most LaTeX
-% systems. The latest version can be obtained at:
-% http://www.ctan.org/tex-archive/macros/latex/contrib/misc/
-% Read the url.sty source comments for usage information. Basically,
-% \url{my_url_here}.
-
-
-
-
-
-% *** Do not adjust lengths that control margins, column widths, etc. ***
-% *** Do not use packages that alter fonts (such as pslatex).         ***
-% There should be no need to do such things with IEEEtran.cls V1.6 and later.
-% (Unless specifically asked to do so by the journal or conference you plan
-% to submit to, of course. )
-
-
-% correct bad hyphenation here
-\hyphenation{op-tical net-works semi-conduc-tor}
-
-
 \usepackage{graphicx}
 \usepackage{color}
 \usepackage{placeins}
@@ -357,6 +328,7 @@
 \usepackage{algorithm}
 \usepackage{qtree}
 \usepackage{url}
+\usepackage{pgfplots}
 
 \begin{document}
 %
@@ -375,37 +347,6 @@
 University of Tennessee at Chattanooga\\
 Chattanooga, Tennessee, U.S.A.\\}}
 
-% conference papers do not typically use \thanks and this command
-% is locked out in conference mode. If really needed, such as for
-% the acknowledgment of grants, issue a \IEEEoverridecommandlockouts
-% after \documentclass
-
-% for over three affiliations, or if they all won't fit within the width
-% of the page, use this alternative format:
-%
-%\author{\IEEEauthorblockN{Michael Shell\IEEEauthorrefmark{1},
-%Homer Simpson\IEEEauthorrefmark{2},
-%James Kirk\IEEEauthorrefmark{3},
-%Montgomery Scott\IEEEauthorrefmark{3} and
-%Eldon Tyrell\IEEEauthorrefmark{4}}
-%\IEEEauthorblockA{\IEEEauthorrefmark{1}School of Electrical and Computer Engineering\\
-%Georgia Institute of Technology,
-%Atlanta, Georgia 30332--0250\\ Email: see http://www.michaelshell.org/contact.html}
-%\IEEEauthorblockA{\IEEEauthorrefmark{2}Twentieth Century Fox, Springfield, USA\\
-%Email: homer@thesimpsons.com}
-%\IEEEauthorblockA{\IEEEauthorrefmark{3}Starfleet Academy, San Francisco, California 96678-2391\\
-%Telephone: (800) 555--1212, Fax: (888) 555--1212}
-%\IEEEauthorblockA{\IEEEauthorrefmark{4}Tyrell Inc., 123 Replicant Street, Los Angeles, California 90210--4321}}
-
-
-
-
-% use for special paper notices
-%\IEEEspecialpapernotice{(Invited Paper)}
-
-
-
-
 % make the title area
 \maketitle
 
@@ -413,59 +354,65 @@ Chattanooga, Tennessee, U.S.A.\\}}
 \begin{abstract}
 %\boldmath
 % Please include a brief abstract here. The abstract should be limited to 50-200 words and should concisely state what was done, how it was done, principal results, and their significance.
-Our primary motivation for undertaking this study is to test the reliability of algorithm theoretically estimated running time and the experimental results that follow. Secondary considerations are pursuing algorithms that operate on relevant themes emerging in computer science such as massive datasets. The following algorithms will be implemented and evaluated:
-
+Our primary motivation for undertaking this study is to test the reliability of an algorithm's theoretically estimated running time and the experimental results that follow. Secondary considerations are pursuing algorithms that operate on relevant themes emerging in computer science such as massive datasets. The following algorithms will be implemented and evaluated:
+\vspace{1 mm}
 \begin{itemize}
-  \item Fuzzy k-Means
   \item BIRCH
   \item DBSCAN
+  \item Fuzzy k-Means
 \end{itemize}
+\vspace{1 mm}
 Our research involves determining which of the selected algorithms provides the most efficient estimated runtime and most efficient experimental runtime in a real-world implementation with regard to spatial-specific metrics including:
-
+\vspace{1 mm}
 \begin{itemize}
-  \item The ability to handle higher dimensionality
+  \item The ability to handle dimensionality
   \item Handle irregularly shaped clusters
   \item Insensitivity to noise
   \item Independence of the data input order
-  \item Requirement of a-priori knowledge or inputs
 \end{itemize}
-
+\vspace{1 mm}
 
 \end{abstract}
-% IEEEtran.cls defaults to using nonbold math in the Abstract.
-% This preserves the distinction between vectors and scalars. However,
-% if the conference you are submitting to favors bold math in the abstract,
-% then you can use LaTeX's standard command \boldmath at the very start
-% of the abstract to achieve this. Many IEEE journals/conferences frown on
-% math in the abstract anyway.
-
-% no keywords
-
-
-
-
-% For peer review papers, you can put extra information on the cover
-% page as needed:
-% \ifCLASSOPTIONpeerreview
-% \begin{center} \bfseries EDICS Category: 3-BBND \end{center}
-% \fi
-%
-% For peerreview papers, this IEEEtran command inserts a page break and
-% creates the second title. It will be ignored for other modes.
-\IEEEpeerreviewmaketitle
-
-
 
 \section{Introduction}
-%==================================
-% DESCRIPTION / SECTION
-%==================================
-This needs to be added to significantly, then segues into the three algorithms \dots
+Due to advances in scientific data collection, we now have large and continuously growing amounts of data. Clustering is one of the techniques used in data mining and is also a common technique in statistical data analysis and spatial data mining. Spatial data consists of geometric information which can be continuous or discrete. Spatial clustering can be applied on spatial data sets for successful data mining. Even though there are number of different methods proposed for spatial clustering, they can be divided into three types which are partition-based clustering, hierarchical clustering and density-based clustering.  As the name suggests, partition based clustering partitions the data into groups of similar objects in a cluster compared to the objects in other clusters.  K-means, K-medoids and Fuzzy C means are few of the popular partition-based clustering algorithms.  Hierarchical clustering is based on the idea of building a tree of data that can merge similar groups of points together by performing a sequence of partitions. BIRCH, CHAMELEON, and CURE are some of the examples of hierarchical clustering.  Density based clustering is based on grouping of clusters as areas of higher density than the remaining data. DBSCAN, GDBSCAN and OPTICS are some of the examples of density based clustering. Out of each the three general types of spatial clustering algorithms, we have chosen one algorithm to run performance testing.
 
+%==================================
+% BIRCH ALGORITHM
+%==================================
+\subsection{BIRCH}
+
+The Balanced Iterative Reducing and Clustering using Hierarchies (BIRCH) algorithm was conceived of as a way to balance the need to cluster extremely large datasets in situations where time and memory are limited. To achieve the time requirement, BIRCH only scans a dataset one time, which improves the rumtime efficiency. While it may be counterintuitive that it only scans a dataset one time while also having a memory restricted system, BIRCH accomplishes this by building a Clustering Feature Tree (CF Tree) that can cluster data in chunks as it is scanned piecemeal \cite{birch}.
+
+The BIRCH algorithm consists of four phases, two of which are optional:
+\vspace{1 mm}
+\begin{enumerate}
+  \item Creation of the CF Tree scanned into memory in $O(n)$
+  \item Resizing tree to remove outliers (optional)
+  \item Clustering using custom hierarchichal agglomerative clustering algorithm in $O(n^2)$
+  \item Additional scanning of the data for improved outlier removal (optional)
+\end{enumerate}
+\vspace{1 mm}
+
+\begin{algorithm}
+\caption{BIRCH}
+\begin{algorithmic}[1]
+\Procedure{Birch}{$add, inputs, here$}
+\EndProcedure
+\end{algorithmic}
+\end{algorithm}
+
+\begin{center}
+\includegraphics[width=90mm]{cf_tree.png}
+\end{center}
+
+%==================================
+% DBSCAN ALGORITHM
+%==================================
 \subsection{DBSCAN}
 
 \begin{algorithm}
-\caption{The DBSCAN spatial clustering algorithm}
+\caption{DBSCAN}
 \begin{algorithmic}[1]
 \Procedure{Dbscan}{$D, \epsilon,MinPts$}\Comment{$D$ set of points is unclassified}
   \State $clusterID = 0$
@@ -484,58 +431,64 @@ This needs to be added to significantly, then segues into the three algorithms \
 \EndProcedure
 \end{algorithmic}
 \end{algorithm}
+
 %==================================
-% DESCRIPTION / SECTION
+% FUZZY K-MEANS ALGORITHM
 %==================================
-\subsection{BIRCH}
+\subsection{Fuzzy K-Means}
+Fuzzy k-means clustering (FKM) algorithm is an unsupervised clustering algorithm which can be
+applied to wide range of applications like medical imaging, agricultural engineering, astronomy,
+geology, shape analysis, chemistry and many more applications \cite{pattern}. FKM performs iteratively the partition step until convergence. Extensive computations which are usually required to generate cluster representatives can be accomplished through the iteration process. FKM algorithm partitions data points into $k$ clusters
 
 \begin{algorithm}
-\caption{BIRCH: Balanced Iterative Reducing and Clustering using Hierarchies}
+\caption{Fuzzy K-Means}
 \begin{algorithmic}[1]
-\Procedure{Birch}{$add, inputs, here$}
+\State Input: $D$ (training set with n points), $K$ (number of clusters), $f$ (fuzzy coefficient), $m$ (max\_iterations)
+\State Output: Converged points
+\Procedure{Fuzzy K-Means}{$D, K, f, m$}
+  \State Initialize membership values $V[0,1]$ for $K$ clusters
+  \State $Max=Max+1$
+  \For{$||V-V1|| <= \epsilon$ OR $Max=m$}
+    \For{$i\gets 1, K$}
+        \State Calculate centroids $C$
+        \State Calculate new distance of $n$ to centric
+        \State $V1 = V$
+        \State Update $V$ with new membership
+    \EndFor
+  \EndFor
+\EndProcedure
+\Statex
+\Procedure{ExpandCluster}{}
 \EndProcedure
 \end{algorithmic}
 \end{algorithm}
 
-% { \qtreeshowframes
-%   {\Tree  [.$CF_1|CF_2|CF_3$\\$child_1|child_2|child_3$
-%             [.VP
-%               [.V is ]
-%               [.NP [.D a ] [ simple tree ] ]
-%             ]
-%           ]
-% }
-
-\begin{center}
-\includegraphics[width=90mm]{cf_tree.png}
-\end{center}
-waaaaaaay too pixelated even at 300 dpi :(
-
 %==================================
-% DESCRIPTION / SECTION
+% END OF INTRODUCTION
 %==================================
-\subsection{Fuzzy K-Means}
 
-\section{Assymptotic Evaluation}
-AP-S summary papers are limited to two pages. Any submitted paper that exceeds this limit will be rejected.  \cite{spatial} The page format is two-column, as illustrated here.  Do not add any kind of pagination anywhere in the paper. Do not manually number the headings - the template will do that for you.
-Please take note of the following items when preparing your paper:
+\section{Asymptotic Evaluation}
 
-\subsection{DBSCAN}
 \subsection{BIRCH}
-\subsection{Fuzzy C-Means}
+\subsection{DBSCAN}
+\subsection{Fuzzy K-Means}
+The asymptotic efficiency of FKM algorithm has the following notations:\\*
+$i$ number of iterations over the entire dataset\\*
+$n$ number of data points in the data set\\*
+$c$ number of clusters\\*
+$d$ number of dimension in the data set\\*
 
-\subsection{Headings}
-Primary section headings within the paper are enumerated by Roman numerals and are centered above the text.  Secondary section headings are enumerated by capital letters followed by periods (``A.", ``B.", etc.) and are flush left above their sections. The first letter of each word is capitalized. Tertiary section headings are enumerated by Arabic numerals followed by a parenthesis. They are indented, run into the text in their sections, and are followed by a colon.
+Hence the time complexity of FKM algorithm is $O(ndc^2i$), where growth of $i$ is slower than $n, c, and\:d$.
 
-\subsection{Equations}
-All equations should be labeled in consecutive numerical order. Equation numbers, within parentheses, should be aligned on the right side of the column, as in (1), using a right tab stop. Punctuate equations with commas or periods when they are part of a sentence, as in
+The space complexity of FKM algorithm is $O(nd+nc$), where $nd$ is the size of the data set with $d$ dimensions; and $nc$ is the size of the initial membership matrix.
+
+For large data sets, which cannot be fully loaded into the memory, FKM algorithm will access
+disk for every iteration, thus increasing the input/output complexity $O(ndi)$.
 
 \begin{equation}
 \alpha+\beta=\chi
 \end{equation}
 	            	
-Be sure that the symbols in your equation have been defined before or immediately following the equation. Use ``(1)", not ``Eq. (1)" or ``equation (1)", except at the beginning of a sentence: ``Equation (1) is . . ."
-
 \subsection{Figures and Tables}
 Place each figure and/or table within the width of a single column, as illustrated by Fig. 1 and Table I below. Large figures and tables may span across both columns. Figure captions should be below the figures; table headings should appear above the tables. Insert figures and tables after they are cited in the text.
 
@@ -547,49 +500,108 @@ Place each figure and/or table within the width of a single column, as illustrat
 % \end{center}
 % \end{figure}
 
+\section{Empirical Evaluation}
+
+
 \begin{table}[h]
 \begin{center}
 \caption{Comparison of Algorithm runtimes, in seconds} \label{Table1Label}
 \begin{tabular}{|c|c|c|c|}
  \hline
- Number of data points & BIRCH & Fuzzy K-means & DBSCAN\\
+ Number of data points & BIRCH & DBSCAN& Fuzzy K-means \\
  \hline
- 150,000 & 25.030436 & 155.195909 & 999\\
+ 150,000 & 25.030436 & 75 & 155.195909\\
  \hline
- 75,000 & 11.624714 & 74.441829 & 999\\
+ 75,000 & 11.624714 & 45 & 74.441829\\
  \hline
- 37,500 & 5.232216 & 38.501281 & 999\\
+ 37,500 & 5.232216 & 25 & 38.501281\\
  \hline
- 18,750 & 2.363530 & 19.471102 & 999\\
+ 18,750 & 2.363530 & 10 & 19.471102\\
  \hline
- 9375 & 1.031360 & 9.723024 & 999\\
+ 9375 & 1.031360 & 5 & 9.723024\\
  \hline
- 4688 & 0.447284 & 4.771375 & 999\\
+ 4688 & 0.447284 & 2 & 4.771375\\
  \hline
- 2344 & 0.203005 & 2.414930 & 999\\
+ 2344 & 0.203005 & 1 & 2.414930\\
  \hline
- 1172 & 0.091562 & 1.214021 & 999\\
+ 1172 & 0.091562 & 0.5 & 1.214021\\
  \hline
- 586 & 0.043213 & 0.640441 & 999\\
+ 586 & 0.043213 & 0.25 & 0.640441\\
  \hline
- 297 & 0.020289 & 0.338978 & 999\\
+ 297 & 0.020289 & 0.125 & 0.338978\\
  \hline
 \end{tabular}
 \end{center}
 \end{table}
 
-\subsection{Abbreviations and Acronyms}
-Define abbreviations and acronyms the first time they are used in the text, even after they have been defined in the abstract.
+% (150000,155.195909)
+% (75000,74.441829)
+% (37500,38.501281)
+% (18750,19.471102)
+% (9375,9.723024)
+% (4688,4.771375)
+% (2344,2.414930)
+% (1172,1.214021)
+% (586,0.640441)
+% (297,0.338978)
 
-\subsection{Units and Numbers}
-The International System of Units (SI units) is advocated for use in IEEE publications. Unit symbols should be used with measured quantities, i.e., 1 mm, but not when unit names are used in text without quantities, i.e., ``a few millimeters." Use a zero before decimal points: ``0.25", not ``.25".
 
-\subsection{References}
-All references should be labeled in consecutive numerical order [1]-[3]. When citing references within the text, refer simply to the reference number enclosed by square brackets, as in [1].  Do not use ``Ref. [1]" or ``reference [1]" except at the beginning of a sentence: ``Reference [1] was the first…"
-A numbered list of references must be provided at the end of the paper. The list should be arranged in the order of citation in text, not in alphabetical order. Each reference should be given a unique reference number. Include all authors' names on a paper in the reference list; do not use ``et al.". Papers that have not been published, even if they have been submitted for publication, should be cited as ``unpublished" [3]. Papers that have been accepted for publication should be cited as ``in press". Capitalize only the first word in a paper title, except for proper nouns and element symbols.
+\begin{center}
+\begin{tikzpicture}
+\begin{axis}[
+    height=9cm,
+    width=9cm,
+    grid=major,
+  ]
+  \addplot coordinates {
+    (150000,25.030436)
+    (75000,11.624714)
+    (37500,5.232216)
+    (18750,2.363530)
+    (9375,1.031360)
+    (4688,0.447284)
+    (2344,0.203005)
+    (1172,0.091562)
+    (586,0.043213)
+    (297,0.020289)
+  };
+  \addlegendentry{BIRCH}
+  \addplot coordinates {
+    (150000,75)
+    (75000,45)
+    (37500,25)
+    (18750,10)
+    (9375,5)
+    (4688,2)
+    (2344,1)
+    (1172,0.5)
+    (586,0.25)
+    (297,0.125)
+  };
+  \addlegendentry{DBSCAN}
+  \addplot coordinates {
+    (150000,155.195909)
+    (75000,74.441829)
+    (37500,38.501281)
+    (18750,19.471102)
+    (9375,9.723024)
+    (4688,4.771375)
+    (2344,2.414930)
+    (1172,1.214021)
+    (586,0.640441)
+    (297,0.338978)
+  };
+  \addlegendentry{FuzzyKmeans}
+\end{axis}
+\end{tikzpicture}
+\end{center}
 
-\section{Empirical Evaluation}
 \subsection{Testing Environment}
+\begin{center}
+Intel Core i7 @ 2.3GHz per core\\*
+16GB DDR3 @ 1600MHz
+\end{center}
+
 \subsection{Results}
 \section{Discussion and Conclusion}
 
@@ -697,28 +709,6 @@ An acknowledgement statement, if applicable, goes here.
 
 
 
-% trigger a \newpage just before the given reference
-% number - used to balance the columns on the last page
-% adjust value as needed - may need to be readjusted if
-% the document is modified later
-%\IEEEtriggeratref{8}
-% The "triggered" command can be changed if desired:
-%\IEEEtriggercmd{\enlargethispage{-5in}}
-
-% references section
-
-% can use a bibliography generated by BibTeX as a .bbl file
-% BibTeX documentation can be easily obtained at:
-% http://www.ctan.org/tex-archive/biblio/bibtex/contrib/doc/
-% The IEEEtran BibTeX style support page is at:
-% http://www.michaelshell.org/tex/ieeetran/bibtex/
-%\bibliographystyle{IEEEtran}
-% argument is your BibTeX string definitions and bibliography database(s)
-%\bibliography{IEEEabrv,../bib/paper}
-%
-% <OR> manually copy in the resultant .bbl file
-% set second argument of \begin to the number of references
-% (used to reserve space for the reference number labels box)
 \begin{thebibliography}{1}
 
 \bibitem{survey} R. Xu, D. Wunsch, ``Survey of Clustering Algorithms'', \emph{IEEE Transactions on Neural Networks}, vol. 16, no. 3, May, 2005, available at 
@@ -754,14 +744,14 @@ An acknowledgement statement, if applicable, goes here.
 \bibitem{extended} U. Kaymak, M SErasmus Research Institute of Managementetnes, ``Extended Fuzzy Clustering Algorithms'', \emph{Erasmus Research Institute of Management}, available at
 \url{http://repub.eur.nl/res/pub/57/erimrs20001123094510.pdf}
 
-\bibitem{birch} T. Zhang, R. Ramakrishnan, M. Livny, ``BIRCH: An Efficient Data Clustering Method for Very Large Databases'', \emph{SIGMOD ’96}, available at
+\bibitem{birch} T. Zhang, R. Ramakrishnan, M. Livny, ``BIRCH: An Efficient Data Clustering Method for Very Large Databases'', \emph{SIGMOD â€™96}, available at
 \url{http://citeseerx.ist.psu.edu/viewdoc/summary?doi=10.1.1.17.2504}
 
 \bibitem{optimal} A. Hinneburg, D.A. Keim, ``Optimal Grid-Clustering: Towards Breaking the Curse of Dimensionality in High-Dimensional Clustering'', \emph{unpublished}, 1999, available at
 \url{http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.44.4721&rep=rep1&type=pdf}  
 
                                              
-\bibitem{data} C. Döring, M. J. Lesot, and R. Kruse, ``Data analysis with fuzzy clustering methods'', \emph{Computational Statistics and Data Analysis},2006, pp. 192-214.
+\bibitem{data} C. DÃ¶ring, M. J. Lesot, and R. Kruse, ``Data analysis with fuzzy clustering methods'', \emph{Computational Statistics and Data Analysis},2006, pp. 192-214.
 
 \bibitem{pattern} J. C. Bezdek ``Pattern Recognition with Fuzzy Objective Function Algorithm'', \emph{Press, New York}, 1981.
 
@@ -776,12 +766,5 @@ An acknowledgement statement, if applicable, goes here.
 
 \end{thebibliography}
 
-
-
-
 % that's all folks
 \end{document}
-
-
-
-
