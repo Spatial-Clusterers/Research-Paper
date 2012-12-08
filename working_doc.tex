@@ -115,7 +115,9 @@ The algorithms were evaluated using a data set from the National Oceanic and Atm
 \end{abstract}
 
 \section{Introduction}
-Due to advances in scientific data collection, we now have large and continuously growing amounts of data. Clustering is one of the techniques used in data mining and is also a common technique in statistical data analysis and spatial data mining. Spatial data consists of geometric information which can be continuous or discrete. Spatial clustering can be applied on spatial data sets for successful data mining. Even though there are number of different methods proposed for spatial clustering, they can be divided into three types which are partition-based clustering, hierarchical clustering and density-based clustering.  As the name suggests, partition based clustering partitions the data into groups of similar objects in a cluster compared to the objects in other clusters.  K-means, K-medoids and Fuzzy C means are few of the popular partition-based clustering algorithms.  Hierarchical clustering is based on the idea of building a tree of data that can merge similar groups of points together by performing a sequence of partitions. BIRCH, CHAMELEON, and CURE are some of the examples of hierarchical clustering.  Density based clustering is based on grouping of clusters as areas of higher density than the remaining data. DBSCAN, GDBSCAN and OPTICS are some of the examples of density based clustering. Out of each the three general types of spatial clustering algorithms, we have chosen one algorithm to run performance testing.
+With the pervasiveness of localized and continuous data collection, the amount of data available has increased exponentially. Clustering is a technique used in knowledge discovery and data mining (KDD) and is also common in statistical data analysis \cite{survey}. Spatial data spans the range of nominal, ordinal, interval, and ratio levels of measurement and can be continuous or discrete \cite{spat}. Clustering techniques can be extended to spatial data for KDD. Clustering roughly falls within three broad categories: partition-based, hierachical, and locality clustering \cite{spatial}
+
+ As the name suggests, partition based clustering partitions the data into groups of similar objects in a cluster compared to the objects in other clusters.  K-means, K-medoids and Fuzzy C means are few of the popular partition-based clustering algorithms.  Hierarchical clustering is based on the idea of building a tree of data that can merge similar groups of points together by performing a sequence of partitions. BIRCH, CHAMELEON, and CURE are some of the examples of hierarchical clustering.  Density based clustering is based on grouping of clusters as areas of higher density than the remaining data. DBSCAN, GDBSCAN and OPTICS are some of the examples of density based clustering. Out of each the three general types of spatial clustering algorithms, we have chosen one algorithm to run performance testing.
 
 %==================================
 % BIRCH ALGORITHM
@@ -248,7 +250,7 @@ A cluster $C$, which is a subset of the dataset $D$, must meet the following lem
 \end{description}
 To discover a cluster, \texttt{DBSCAN} chooses an arbitrary point $p$ and retrieves all points density-reachable from $p$ wrt. $\epsilon$ and $MinPts$. If $p$ is a border point, no points are density-reachable from $p$ and \texttt{DBSCAN} visits the next point of the database \cite{dbscan}. For each unvisited point $p$ in the dataset $D$, the algorithm marks $p$ as visited and determines its neighboring points. If the number of neighboring points is less than $MinPts$, $p$ is marked as noise. Otherwise, the point is classified as a cluster and the algorithm moves to the next unvisited point \cite{dbscan}. \\
 
-Psuedocode for the two main functions of the algorithms, \texttt{DBSCAN} and \texttt{ExpandCluster}, are provided below \cite{dbscan}:
+Psuedocode for the \texttt{DBSCAN} is provided below \cite{dbscan}. Due to space requirements \texttt{ExpandCluster} has been excluded.
 
 \begin{algorithm}
 \caption{DBSCAN}
@@ -266,8 +268,6 @@ Psuedocode for the two main functions of the algorithms, \texttt{DBSCAN} and \te
   \EndFor
 \EndProcedure
 \Statex
-\Procedure{ExpandCluster}{}
-\EndProcedure
 \end{algorithmic}
 \end{algorithm}
 
@@ -356,25 +356,25 @@ Function calls that were not directly related to each respective algorithm, i.e.
  \hline
  Number of data points & BIRCH & DBSCAN& Fuzzy K-Means \\
  \hline
- 150,000 & 25.030436 & 75 & 155.195909\\
+ 150,000 & 25.030436 & & 155.195909\\
  \hline
- 75,000 & 11.624714 & 45 & 74.441829\\
+ 75,000 & 11.624714 & & 74.441829\\
  \hline
- 37,500 & 5.232216 & 25 & 38.501281\\
+ 37,500 & 5.232216 &  & 38.501281\\
  \hline
- 18,750 & 2.363530 & 10 & 19.471102\\
+ 18,750 & 2.363530 & & 19.471102\\
  \hline
- 9375 & 1.031360 & 5 & 9.723024\\
+ 9375 & 1.031360 & 3418.699 & 9.723024\\
  \hline
- 4688 & 0.447284 & 2 & 4.771375\\
+ 4688 & 0.447284 & 861.212 & 4.771375\\
  \hline
- 2344 & 0.203005 & 1 & 2.414930\\
+ 2344 & 0.203005 & 214.546 & 2.414930\\
  \hline
- 1172 & 0.091562 & 0.5 & 1.214021\\
+ 1172 & 0.091562 & 53.367 & 1.214021\\
  \hline
- 586 & 0.043213 & 0.25 & 0.640441\\
+ 586 & 0.043213 & 5.066 & 0.640441\\
  \hline
- 297 & 0.020289 & 0.125 & 0.338978\\
+ 297 & 0.020289 & 1.827 & 0.338978\\
  \hline
 \end{tabular}
 \end{center}
@@ -428,16 +428,12 @@ Function calls that were not directly related to each respective algorithm, i.e.
   };
   \addlegendentry{DBSCAN}
   \addplot coordinates {
-    (150000,155.195909)
-    (75000,74.441829)
-    (37500,38.501281)
-    (18750,19.471102)
-    (9375,9.723024)
-    (4688,4.771375)
-    (2344,2.414930)
-    (1172,1.214021)
-    (586,0.640441)
-    (297,0.338978)
+    (9375,3418.699)
+    (4688,861.212)
+    (2344,214.546)
+    (1172,53.367)
+    (586,5.066)
+    (297,1.827)
   };
   \addlegendentry{Fuzzy K-Means}
 \end{axis}
@@ -451,31 +447,43 @@ Function calls that were not directly related to each respective algorithm, i.e.
 % \end{figure}
 
 \section{Discussion and Conclusion}
-The results of the empirical evaluation correlated well with the asymptotic time complexity with respect to each algorithm, with the exception of \texttt{DBSCAN}. The author proposes further research into the implementation of the algorithm, specifically as to whether the function \texttt{dbscan} is actually using the R*-tree. The indexing structure is used to calculate $\epsilon$, but upon further review it may be revealed the same structure is not being used within the algorithm itself. Furthermore, \texttt{DBSCAN} is unable to handle clustering of data with a dimensionality greater than 2, and therefore suffering the curse of dimensionality. \cite{}
+The results of the empirical evaluation correlated well with the asymptotic time complexity with respect to each algorithm, with the exception of \texttt{DBSCAN}. The function calls related to the algorithm correlated well with the asymptotic time complexity, but the actual program running time was much larger and prohibited the completion of a subset of the dataset. Furthermore, \texttt{DBSCAN} is unable to handle clustering of data with a dimensionality greater than 2, and therefore suffering the curse of dimensionality. \cite{optimal}
 
 \newpage
 \begin{thebibliography}{1}
 
-
-\bibitem{birch} T. Zhang, R. Ramakrishnan, M. Livny, ``BIRCH: An Efficient Data Clustering Method for Very Large Databases'', \emph{SIGMOD ’96}, available at
-\url{http://citeseerx.ist.psu.edu/viewdoc/summary?doi=10.1.1.17.2504}
-
-\bibitem{survey} R. Xu, D. Wunsch, ``Survey of Clustering Algorithms'', \emph{IEEE Transactions on Neural Networks}, vol. 16, no. 3, May, 2005, available at 
-\url{http://axon.cs.byu.edu/Dan/678/papers/Cluster/Xu.pdf}.
-
-\bibitem{dbscan} M. Ester, H. Kriegel, J. Sander, X. Xu. ``A Density-Based Algorithm for Discovering Clusters in Large Spatial Databases with Noise'', \emph{2nd International Conference on Knowledge Discovery and Data Mining}
-
-\bibitem{database} Chandra E., Anuradha V.P. ``A Survey on Clustering Algorithms for Data in Spatial Database Management Systems'', \emph{International Journal of Computer Applications}, available at
-\url{http://www.ijcaonline.org/volume24/number9/pxc3873975.pdf}
-
-\bibitem{categorization} N. Soni, A. Ganatra, ``Categorization of Several Clustering Algorithms from Different Perspective: A Review'', \emph{International Journal of Advanced Research in Computer Science and Software Engineering}, vol. 2, iss. 8, August, 2012, available at
-\url{http://www.ijarcsse.com/docs/papers/8_August2012/Volume_2_issue_8/V2I800161.pdf}
-
 \bibitem{efficient} A. Denton, ``EFFICIENT HIERARCHICAL CLUSTERING OF LARGE DATA SETS USING P-TREES'', \emph{unpublished}, available at
 \url{http://www.cs.ndsu.nodak.edu/~adenton/thesis/chapter7_Final.pdf}
 
+\bibitem{optimal} A. Hinneburg, D.A. Keim, ``Optimal Grid-Clustering: Towards Breaking the Curse of Dimensionality in High-Dimensional Clustering'', \emph{unpublished}, 1999, available at
+\url{http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.44.4721&rep=rep1&type=pdf} 
+
+\bibitem{fuzzy} Apache Foundation, ``Fuzzy K-means'', \emph{Apache Mahmout}, available at
+\url{https://cwiki.apache.org/MAHOUT/fuzzy-K-Means.html}
+
+\bibitem{literature} B.G.O. Reddy, M. Ussenaiah, ``Literature Survey On Clustering Techniques'', \emph{IOSR Journal of Computer Engineering}, vol. 3, iss. 1 (July-Aug. 2012), PP 01-12, available at
+\url{http://iosrjournals.org/iosr-jce/full-issue/vol3-issue1.pdf}
+
+\bibitem{data} C. Döring, M. J. Lesot, and R. Kruse, ``Data analysis with fuzzy clustering methods'', \emph{Computational Statistics and Data Analysis},2006, pp. 192-214.
+
+\bibitem{hoffstein} Corey Hoffstein, ``DBSCAN'', \emph{Github.com}, available at
+\url{https://github.com/choffstein/dbscan}
+
+\bibitem{kmeans} C-T Chang, J.Z.C. Lai and M-D Jeng, ``A Fuzzy K-means clustering algorithm  using cluster center displacement'', \emph{Journal of information science and engineering} 27, 995-1009, 2011.
+
 \bibitem{spatial} E. Kolatch, ``Clustering Algorithms for Spatial Databases: A Survey'', \emph{unpublished}, available at
 \url{http://mrl.cecsresearch.org/Resources/papers/Ericasurvey.pdf}
+
+\bibitem{oberst} Jan Oberst, ``BIRCH'', \emph{Github.com}, available at
+\url{https://github.com/janoberst/BIRCH/blob/master/birch.py}
+
+\bibitem{spat} J. burt, G. barber, D. Rugby.  ``Elementary Statistics for Geographers'', Guilford Publications, 2009.
+
+\bibitem{pattern} J. C. Bezdek ``Pattern Recognition with Fuzzy Objective Function Algorithm'', \emph{Press, New York}, 1981.
+
+\bibitem{suppressed} J. L. Fan, W. Z. Zhen, and W. X. Xie, ``Suppressed fuzzy c-means clustering algorithm'', \emph{ Recognition Letters}, 2003, pp. 1607-1612.
+
+\bibitem{dbscan} M. Ester, H. Kriegel, J. Sander, X. Xu. ``A Density-Based Algorithm for Discovering Clusters in Large Spatial Databases with Noise'', \emph{2nd International Conference on Knowledge Discovery and Data Mining}
 
 \bibitem{denisty} M. Parimala, D. Lopez, N.C. Senthilkumar, ``A Survey on Density Based Clustering Algorithms for Mining Large Spatial Databases'', \emph{International Journal of Advanced Science and Technology}, vol. 31, June, 2011, available at
 \url{http://www.sersc.org/journals/IJAST/vol31/5.pdf}
@@ -483,34 +491,19 @@ The results of the empirical evaluation correlated well with the asymptotic time
 \bibitem{comparative} M. Verma, M. Srivastava, N. Chack, A. K. Diswar, N. Gupta, ``A Comparative Study of Various Clustering Algorithms in Data Mining'', \emph{International Journal of Engineering Research and Applications}, vol. 2, iss. 3, May-Jun, 2012, pp.1379-1384, available at
 \url{http://www.ijera.com/papers/Vol2_issue3/ID2313791384.pdf}
 
-\bibitem{math} W. Kainz, ``The Mathematics of GIS'', \emph{ESRI Press}, 2004, available at
-\url{http://homepage.univie.ac.at/wolfgang.kainz/Lehrveranstaltungen/15th_Nordic_Summer_School/The_Mathematics_of_GIS_Draft.pdf}
-
-\bibitem{literature} B.G.O. Reddy, M. Ussenaiah, ``Literature Survey On Clustering Techniques'', \emph{IOSR Journal of Computer Engineering}, vol. 3, iss. 1 (July-Aug. 2012), PP 01-12, available at
-\url{http://iosrjournals.org/iosr-jce/full-issue/vol3-issue1.pdf}
-
-\bibitem{fuzzy} Apache Foundation, ``Fuzzy K-means'', \emph{Apache Mahmout}, available at
-\url{https://cwiki.apache.org/MAHOUT/fuzzy-K-Means.html}
-
-\bibitem{extended} U. Kaymak, M. Setnes, ``Extended Fuzzy Clustering Algorithms'', \emph{Erasmus Research Institute of Management}, available at
-\url{http://repub.eur.nl/res/pub/57/erimrs20001123094510.pdf}
-
-\bibitem{optimal} A. Hinneburg, D.A. Keim, ``Optimal Grid-Clustering: Towards Breaking the Curse of Dimensionality in High-Dimensional Clustering'', \emph{unpublished}, 1999, available at
-\url{http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.44.4721&rep=rep1&type=pdf}  
-
-                                             
-\bibitem{data} C. Döring, M. J. Lesot, and R. Kruse, ``Data analysis with fuzzy clustering methods'', \emph{Computational Statistics and Data Analysis},2006, pp. 192-214.
-
-\bibitem{pattern} J. C. Bezdek ``Pattern Recognition with Fuzzy Objective Function Algorithm'', \emph{Press, New York}, 1981.
-
-\bibitem{suppressed} J. L. Fan, W. Z. Zhen, and W. X. Xie, ``Suppressed fuzzy c-means clustering algorithm'', \emph{ Recognition Letters}, 2003, pp. 1607-1612.
-
-\bibitem{kmeans} C-T Chang, J.Z.C. Lai and M-D Jeng, ``A Fuzzy K-means clustering algorithm  using cluster center displacement'', \emph{Journal of information science and engineering} 27, 995-1009, 2011.
+\bibitem{categorization} N. Soni, A. Ganatra, ``Categorization of Several Clustering Algorithms from Different Perspective: A Review'', \emph{International Journal of Advanced Research in Computer Science and Software Engineering}, vol. 2, iss. 8, August, 2012, available at
+\url{http://www.ijarcsse.com/docs/papers/8_August2012/Volume_2_issue_8/V2I800161.pdf}
 
 \bibitem{efficient} R. L. Cannon, J. V. Dave, and J. C. Bezdek, ``Efficient implementation of the fuzzy c- means clustering algorithm'', \emph{IEEE Transactions on PAMI}, Vol. 8, 1986, pp. 248-255.
 
-\bibitem{oberst} Jan Oberst, ``BIRCH'', \emph{Github.com}, available at
-\url{https://github.com/janoberst/BIRCH/blob/master/birch.py}
+\bibitem{survey} R. Xu, D. Wunsch, ``Survey of Clustering Algorithms'', \emph{IEEE Transactions on Neural Networks}, vol. 16, no. 3, May, 2005, available at 
+\url{http://axon.cs.byu.edu/Dan/678/papers/Cluster/Xu.pdf}.
+
+\bibitem{birch} T. Zhang, R. Ramakrishnan, M. Livny, ``BIRCH: An Efficient Data Clustering Method for Very Large Databases'', \emph{SIGMOD ’96}, available at
+\url{http://citeseerx.ist.psu.edu/viewdoc/summary?doi=10.1.1.17.2504}
+
+\bibitem{extended} U. Kaymak, M. Setnes, ``Extended Fuzzy Clustering Algorithms'', \emph{Erasmus Research Institute of Management}, available at
+\url{http://repub.eur.nl/res/pub/57/erimrs20001123094510.pdf}
 
 \end{thebibliography}
 
